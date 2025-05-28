@@ -6,9 +6,9 @@
 ifeq ($(CC),)
 CC    = gcc
 endif
-OPTIMIZE    = yes
+OPTIMIZE    = no
 OPENMP      = yes
-DEBUG       = no
+DEBUG       = yes
 PROFILE     = no
 MPI         = no
 AML         = no
@@ -54,9 +54,16 @@ endif
 
 # LLVM Compiler
 ifneq (,$(findstring clang,$(CC)))
-  CFLAGS += -flto
   ifeq ($(OPENMP),yes)
 	CFLAGS += -fopenmp -DOPENMP
+  endif
+
+  ifeq ($(CLANG_MODE),INSTRUMENT)
+	LDFLAGS += -L/${PCXL_ROOT}/lib -lInstruRuntime
+  endif
+
+    ifeq ($(CLANG_MODE),OPTIMIZE)
+	LDFLAGS += -L/${PCXL_ROOT}/lib -lhmalloc
   endif
 endif
 
