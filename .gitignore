@@ -1,3 +1,5 @@
 *.o
 */XSBench
-heap.prof
+result/
+perf_raw_data
+heap_alloc_info/
