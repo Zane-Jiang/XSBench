@@ -39,7 +39,7 @@ CC    = gcc
 endif
 
 # Standard Flags
-CFLAGS := -std=gnu99 -Wall
+CFLAGS := -std=gnu99 -Wall -g
 
 # Linker Flags
 LDFLAGS = -lm
@@ -59,7 +59,7 @@ ifneq (,$(findstring clang,$(CC)))
   endif
 
   ifeq ($(CLANG_MODE),INSTRUMENT)
-	LDFLAGS += -L/${PCXL_ROOT}/lib -lInstruRuntime
+	LDFLAGS += 
   endif
 
     ifeq ($(CLANG_MODE),OPTIMIZE)
