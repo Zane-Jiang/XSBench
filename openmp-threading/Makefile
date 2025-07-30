@@ -6,7 +6,7 @@
 ifeq ($(CC),)
 CC    = gcc
 endif
-OPTIMIZE    = no
+OPTIMIZE    = yes
 OPENMP      = yes
 DEBUG       = yes
 PROFILE     = no
